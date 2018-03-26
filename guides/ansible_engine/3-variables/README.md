@@ -56,6 +56,7 @@ Add a play definition and some variables to your playbook.  These include addtio
 Add a new task called *httpd packages are present*:
 
 ```yml
+{% raw %}
   tasks:
     - name: Ensure httpd packages are present
       yum:
@@ -63,6 +64,7 @@ Add a new task called *httpd packages are present*:
         state: present
       with_items: "{{ httpd_packages }}"
       notify: restart-apache-service
+{% endraw %}
 ```
 
 ---
@@ -163,6 +165,7 @@ handlers:
 Your new, improved playbook is done! Let's take a second look to make sure everything looks the way you intended.  If not, now is the time for us to fix it up. The figure below shows line counts and spacing.
 
 ```yml
+{% raw %}
 ---
 - name: Ensure apache is installed and started
   hosts: web
@@ -210,6 +213,7 @@ Your new, improved playbook is done! Let's take a second look to make sure every
       service:
         name: httpd
         state: restarted
+{% endraw %}
 ```
 
 ## Section 5: Running your new apache playbook
